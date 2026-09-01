@@ -227,25 +227,66 @@ export default function Home() {
                 </button>
               </div>
 
-              {/* JSON Pre block */}
-              <pre className="bg-slate-950 p-4 rounded-xl text-emerald-300 text-xs font-mono overflow-x-auto max-h-72 border border-slate-800/80 shadow-inner">
-                {JSON.stringify(extractedData, null, 2)}
-              </pre>
-
-              <div className="pt-2 flex justify-end">
-                <motion.button
-                  whileHover={{ scale: 1.03, x: 2 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={() => router.push("/dashboard")}
-                  className="px-6 py-2.5 rounded-xl bg-[#F2A93B] text-[#14274E] font-bold text-xs shadow-md hover:bg-[#e0982d] transition-all flex items-center gap-2 cursor-pointer"
-                >
-                  <span>Go to Full Dashboard</span>
-                  <ArrowRight size={14} />
-                </motion.button>
+              {/* Structured Bill Summary Card */}
+            <div className="bg-white p-5 rounded-2xl text-slate-800 shadow-sm border border-slate-200 mt-4">
+              <div className="flex justify-between items-center border-b border-slate-100 pb-4 mb-4">
+                <div>
+                  <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Audit Summary</h3>
+                  <p className="text-lg font-black">Ref: {extractedData?.reference_number || "N/A"}</p>
+                </div>
+                <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                  extractedData?.protected_status === "protected" 
+                    ? "bg-emerald-100 text-emerald-700" 
+                    : "bg-amber-100 text-amber-700"
+                }`}>
+                  {extractedData?.protected_status || "STATUS UNKNOWN"}
+                </span>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+
+              <div className="grid grid-cols-2 gap-3 mb-4">
+                <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                  <span className="text-xs text-slate-500 font-semibold block mb-1">Units Consumed</span>
+                  <span className="text-xl font-black text-slate-800">{extractedData?.units_consumed || 0} <span className="text-sm font-medium text-slate-500">kWh</span></span>
+                </div>
+                <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                  <span className="text-xs text-slate-500 font-semibold block mb-1">Base Energy</span>
+                  <span className="text-xl font-black text-slate-800"><span className="text-sm font-medium text-slate-500">Rs.</span> {extractedData?.energy_charges || 0}</span>
+                </div>
+              </div>
+
+              <div className="space-y-2.5 text-sm border-t border-slate-100 pt-4 mb-5">
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-500 font-medium">FPA & QTA Adjustments:</span>
+                  <span className="font-bold text-slate-700">Rs. {(extractedData?.fpa || 0) + (extractedData?.qta || 0)}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-500 font-medium">Taxes (GST, Duty, TV Fee):</span>
+                  <span className="font-bold text-slate-700">Rs. {(extractedData?.gst || 0) + (extractedData?.electricity_duty || 0) + (extractedData?.tv_fee || 0)}</span>
+                </div>
+              </div>
+
+              <div className="flex justify-between items-center bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span className="font-bold text-blue-900">Total Amount Due:</span>
+                <span className="text-2xl font-black text-blue-600">
+                  Rs. {extractedData?.total_amount_due || 0}
+                </span>
+              </div>
+            </div>
+
+            <div className="pt-4 flex justify-end">
+              <motion.button
+                whileHover={{ scale: 1.03, x: 2 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => router.push("/dashboard")}
+                className="px-6 py-2.5 rounded-xl bg-[#F2A93B] text-[#14274E] font-bold text-xs shadow-md hover:bg-[#e0982d] transition-all flex items-center gap-2 cursor-pointer"
+              >
+                <span>Go to Full Dashboard</span>
+                <ArrowRight size={14} />
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
         {/* Trust Badges with Staggered Entrance */}
         <motion.div

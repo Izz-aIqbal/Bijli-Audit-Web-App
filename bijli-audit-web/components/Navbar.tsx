@@ -12,6 +12,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "Upload", href: "/", icon: Upload },
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+    { name: "Calculator", href: "/calculator", icon: Calculator }, 
     { name: "History", href: "/history", icon: History },
     { name: "Planner", href: "/planner", icon: Calculator },
   ];
