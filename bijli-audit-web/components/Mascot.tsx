@@ -18,8 +18,8 @@ export default function Mascot() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-      {/* Speech Teaser Bubble (visible when chat is closed) */}
+    <div className="fixed bottom-8 right-6 sm:bottom-10 sm:right-8 z-[60] flex flex-col items-end print:hidden">
+      {/* Speech Teaser Bubble */}
       <AnimatePresence>
         {!open && (
           <motion.div
@@ -28,9 +28,8 @@ export default function Mascot() {
             exit={{ opacity: 0, scale: 0.8, y: 10 }}
             transition={{ duration: 0.3 }}
             onClick={() => setOpen(true)}
-            className="mb-3 flex items-center gap-3 bg-white border border-gray-200 px-4 py-2.5 rounded-2xl shadow-xl cursor-pointer hover:scale-105 transition-transform max-w-xs"
+            className="mb-3 flex items-center gap-3 bg-white border border-slate-200/90 px-4 py-2.5 rounded-2xl shadow-xl hover:shadow-2xl cursor-pointer hover:scale-105 transition-all max-w-xs"
           >
-            {/* Cute Electric Mascot Icon */}
             <div className="relative w-10 h-10 shrink-0 flex items-center justify-center">
               <img
                 src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
@@ -59,7 +58,7 @@ export default function Mascot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.9 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="mb-4 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col"
+            className="mb-4 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col"
             style={{ height: "420px" }}
           >
             {/* Header */}
@@ -89,8 +88,8 @@ export default function Mascot() {
                   animate={{ opacity: 1, y: 0 }}
                   className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl text-sm font-medium leading-relaxed ${
                     m.role === "assistant"
-                      ? "bg-white border border-gray-200 text-slate-800 self-start shadow-sm"
-                      : "bg-[#f59e0b] text-slate-950 self-end ml-auto shadow-sm"
+                      ? "bg-white border border-slate-200 text-slate-800 self-start shadow-xs"
+                      : "bg-[#f59e0b] text-slate-950 self-end ml-auto shadow-xs"
                   }`}
                 >
                   {m.text}
@@ -99,7 +98,7 @@ export default function Mascot() {
             </div>
 
             {/* Input Field */}
-            <div className="flex items-center gap-2 border-t border-gray-200 p-3 bg-white">
+            <div className="flex items-center gap-2 border-t border-slate-200 p-3 bg-white">
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -118,14 +117,14 @@ export default function Mascot() {
         )}
       </AnimatePresence>
 
-      {/* Floating Button */}
+      {/* Floating Action Button */}
       <motion.button
         onClick={() => setOpen(!open)}
-        animate={{ y: [0, -8, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ y: [0, -6, 0] }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="w-14 h-14 rounded-full bg-[#1f3a6e] text-[#f59e0b] shadow-xl flex items-center justify-center border-2 border-white"
+        className="w-14 h-14 rounded-full bg-[#1f3a6e] text-[#f59e0b] shadow-xl flex items-center justify-center border-2 border-white cursor-pointer"
       >
         {open ? <X size={24} /> : <MessageCircle size={24} />}
       </motion.button>
