@@ -72,7 +72,7 @@ def audit_bill(bill_data):
     tariff_data = load_tariff()
 
     units = float(bill_data.get("units_consumed", 0))
-    is_protected = str(bill_data.get("status", "")).strip().lower() == "protected"
+    is_protected = str(bill_data.get("protected_status", "")).strip().lower() == "protected"
     fpa = float(bill_data.get("fpa_charge", 0.0))
     qta = float(bill_data.get("qta_charge", 0.0))
     billed_amount = float(bill_data.get("billed_amount", 0.0))
