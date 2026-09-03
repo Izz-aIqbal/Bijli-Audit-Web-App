@@ -20,50 +20,50 @@
     "min_units": 1,
     "max_units": 100,
     "rate":  16.48,
-    "fixed_charge": 75.0
+    "fixed_charges": 75.0
 },
 {
     "min_units": 101,
     "max_units": 200,
     "rate": 21.32,
-    "fixed_charge": 75.0
+    "fixed_charges": 75.0
 },
 {
     
     "min_units": 201,
     "max_units": 300,
     "rate": 25.09,
-    "fixed_charge": 175.0
+    "fixed_charges": 175.0
 },
 {
     "min_units": 301,
     "max_units": 400,
     "rate": 29.04,
-    "fixed_charge": 350.0
+    "fixed_charges": 350.0
 },
 {
     "min_units": 401,
     "max_units": 500,
     "rate": 33.24,
-    "fixed_charge": 400.0
+    "fixed_charges": 400.0
 },
 {
     "min_units": 501,
     "max_units": 600,
     "rate": 36.66,
-    "fixed_charge": 450.0
+    "fixed_charges": 450.0
 },
 {
     "min_units": 601,
     "max_units": 700,
     "rate": 39.89,
-    "fixed_charge": 500.0
+    "fixed_charges": 500.0
 },
 {
     "min_units": 701,
     "max_units": 9999,
     "rate": 42.72,
-    "fixed_charge": 550.0
+    "fixed_charges": 550.0
 }
 
 ]
