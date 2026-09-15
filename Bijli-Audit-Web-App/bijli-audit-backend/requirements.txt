@@ -22,6 +22,11 @@ openai==3.7.0               # Client used for bill extraction + Bijli chat (Open
 requests==2.34.2            # HTTP helper used in OCR/extraction helpers
 
 # ---------- OCR (reading bill photos) ----------
+# NOTE: pytesseract is only the Python WRAPPER. The actual Tesseract OCR engine
+# is an external binary and must be installed separately:
+#   - Windows: winget install UB-Mannheim.TesseractOCR
+#              (main.py auto-points to C:\Program Files\Tesseract-OCR\tesseract.exe)
+#   - Linux/Railway: apt-get install -y tesseract-ocr  (see the backend Dockerfile)
 pytesseract==0.3.13           # Lightweight OCR (Tesseract engine) — fits free tiers
 opencv-python-headless==5.0.0.93  # Image pre-processing used with OCR
 numpy==2.5.2                # Numeric arrays for image processing
