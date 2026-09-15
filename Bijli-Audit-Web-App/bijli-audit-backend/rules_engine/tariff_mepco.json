@@ -1,0 +1,38 @@
+{
+  "disco": "MEPCO",
+  "effective_date": "2026-01-01",
+  "source": "NEPRA Uniform Domestic Tariff Schedule",
+  "protected": [
+    { "min_units": 1, "max_units": 100, "rate": 7.74 },
+    { "min_units": 101, "max_units": 200, "rate": 13.01 }
+  ],
+  "unprotected": [
+    { "min_units": 1, "max_units": 100, "rate": 22.44 },
+    { "min_units": 101, "max_units": 200, "rate": 28.91 },
+    { "min_units": 201, "max_units": 300, "rate": 33.10 },
+    { "min_units": 301, "max_units": 400, "rate": 36.46 },
+    { "min_units": 401, "max_units": 500, "rate": 38.95 },
+    { "min_units": 501, "max_units": 600, "rate": 40.22 },
+    { "min_units": 601, "max_units": 700, "rate": 41.85 },
+    { "min_units": 701, "max_units": 99999, "rate": 47.20 }
+  ],
+  "commercial": [
+    { "min_units": 1, "max_units": 100, "rate": 23.44 },
+    { "min_units": 101, "max_units": 300, "rate": 24.42 },
+    { "min_units": 301, "max_units": 700, "rate": 25.40 },
+    { "min_units": 701, "max_units": 99999, "rate": 26.38 }
+  ],
+  "industrial": [
+    { "min_units": 1, "max_units": 100, "rate": 21.41 },
+    { "min_units": 101, "max_units": 300, "rate": 23.49 },
+    { "min_units": 301, "max_units": 99999, "rate": 25.57 }
+  ],
+  "fixed_charges": {
+    "single_phase": 75,
+    "three_phase": 150
+  },
+  "taxes": {
+    "gst_percent": 18.0,
+    "electricity_duty_percent": 1.5
+  }
+}

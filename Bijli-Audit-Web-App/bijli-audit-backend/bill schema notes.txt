@@ -1,0 +1,71 @@
+====================================================================
+               MEPCO BILL DATA SCHEMA (CONSOLIDATED)
+====================================================================
+
+--------------------------------------------------------------------
+1. ACCOUNT & BILLING METADATA
+--------------------------------------------------------------------
+- reference_number           : 14-digit unique identifier (e.g., "05 15173 3633301 U")
+- consumer_id                : Numeric ID (e.g., "1157329294")
+- consumer_name              : Full name of the account holder
+- consumer_address           : Postal/Street address
+- billing_month              : Month & Year of bill (e.g., "JAN 24", "JUN 26")
+- issue_date                 : Date bill was generated (e.g., "16 JAN 24")
+- due_date                   : Payment deadline (e.g., "25 JAN 24")
+- connection_date            : Date connection was activated
+- division                   : MEPCO Division (e.g., "HASANABAD", "RAJANPUR")
+- sub_division               : MEPCO Sub-Division
+
+--------------------------------------------------------------------
+2. TARIFF & CONSUMPTION CLASSIFICATION
+--------------------------------------------------------------------
+- tariff_code                : Specific rate category code (e.g., "A-1a(01)", "A-2a(04)", "D-2b(50)T")
+- tariff_category            : Broad category (e.g., "Domestic", "Commercial")
+- consumer_status            : Protection status ("Protected" vs "Unprotected")
+- connected_load             : Sanctioned load capacity (kW)
+- meter_number               : Meter ID serial (e.g., "S-P 2210296")
+- previous_reading           : Meter unit count at last cycle (e.g., 172)
+- present_reading            : Current meter unit count (e.g., 224)
+- multiplying_factor         : MF multiplier (usually 1)
+- units_consumed             : Total kWh units used (e.g., 52, 117, 817)
+
+--------------------------------------------------------------------
+3. ENERGY & DISCO CHARGES (MEPCO BREAKDOWN)
+--------------------------------------------------------------------
+- cost_of_electricity        : Base consumption charge before taxes/adjustments
+- meter_rent                 : Monthly rental fee for meter equipment
+- service_rent               : Monthly service fee
+- fuel_price_adjustment_fpa  : Fuel price surcharge/rebate (e.g., 400.38)
+- quarterly_tariff_adj_qta   : Periodic tariff adjustment (QTR TARRIF ADJ/DMC)
+- fc_surcharge               : Financing Cost Surcharge (e.g., 167.96)
+- total_mepco_charges        : Sum of base energy charges and DISCO adjustments
+
+--------------------------------------------------------------------
+4. GOVERNMENT TAXES & SURCHARGES
+--------------------------------------------------------------------
+- electricity_duty           : ED fee (e.g., 16, 29.53, 421)
+- tv_fee                     : PTV subscription charge (typically Rs. 35)
+- gst                        : General Sales Tax (e.g., 223, 4898)
+- income_tax                 : Advance tax (if applicable)
+- extra_tax                  : Additional tax tier (if applicable)
+- further_tax                : Secondary tax tier (if applicable)
+- nj_surcharge               : Neelum-Jhelum surcharge (on older bills)
+- taxes_on_fpa               : Aggregate of taxes levied specifically on FPA (GST on FPA, ED on FPA)
+- total_govt_charges         : Sum of all taxes and government surcharges
+
+--------------------------------------------------------------------
+5. BALANCE & PAYABLE TOTALS
+--------------------------------------------------------------------
+- arrears_previous_balance   : Outstanding unpaid balance prior to this cycle (e.g., 62857.91)
+- current_bill               : Total charges for current month only
+- subsidies                  : Government subsidy relief applied (if any)
+- total_fpa_amount           : Net FPA payable
+- amount_within_due_date     : Total payable before/on due date (e.g., 64832, 2433)
+- late_payment_surcharge     : Penalty fee added after due date (e.g., 122, 194)
+- amount_after_due_date      : Total payable if paid late (e.g., 64954, 2627)
+- payment_status             : Status flag (e.g., "PAID", "UNPAID")
+
+--------------------------------------------------------------------
+6. HISTORICAL DATA (OPTIONAL EXTRACTION FOR DASHBOARD)
+--------------------------------------------------------------------
+- billing_history            : 12-month array of previous units consumed, bill amounts, and payments

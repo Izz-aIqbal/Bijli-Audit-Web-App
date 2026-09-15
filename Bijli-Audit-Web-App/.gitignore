@@ -1,0 +1,19 @@
+bijli-audit-backend/venv/
+**/venv/
+**/.venv/
+**/__pycache__/
+*.pyc
+**/temp_*
+node_modules/
+.next/
+.env
+.env*
+*.env
+!.env.example
+
+# backend runtime data (PII — never push)
+bijli-audit-backend/*.db
+bijli-audit-backend/*.db-*
+bijli-audit-backend/media/
+bijli-audit-backend/sample_bills/
+bijli-audit-backend/uvicorn_*.log

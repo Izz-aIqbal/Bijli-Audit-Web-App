@@ -1,0 +1,35 @@
+# ============================================================
+#  BijliAudit — Backend requirements
+#  FastAPI + OCR + LLM extraction + rules engine
+#  Install:  pip install -r requirements.txt
+#  Python  : 3.10+ (tested on 3.11/3.12/3.13)
+# ============================================================
+
+# ---------- Web framework ----------
+fastapi==0.141.1            # API framework (routing, validation, docs at /docs)
+uvicorn[standard]==0.52.4   # ASGI server that runs the FastAPI app
+python-multipart==0.0.32    # Parses multipart file uploads (bill images)
+
+# ---------- Database / models ----------
+sqlmodel==0.0.42            # SQLModel ORM (SQLite tables: billrecord, chatmessage)
+pydantic==2.13.4            # Request/response validation via FastAPI
+
+# ---------- Config ----------
+python-dotenv==1.2.3        # Reads OPENROUTER_API_KEY from .env
+
+# ---------- LLM / OpenRouter ----------
+openai==3.7.0               # Client used for bill extraction + Bijli chat (OpenRouter API)
+requests==2.34.2            # HTTP helper used in OCR/extraction helpers
+
+# ---------- OCR (reading bill photos) ----------
+pytesseract==0.3.13           # Lightweight OCR (Tesseract engine) — fits free tiers
+opencv-python-headless==5.0.0.93  # Image pre-processing used with OCR
+numpy==2.5.2                # Numeric arrays for image processing
+pillow==12.3.0              # Image I/O and rotation/cleanup (PIL)
+
+# ---------- PDF support (uploaded PDF bills) ----------
+pymupdf==1.28.2             # Extracts embedded page images from PDFs (preferred)
+pypdfium2==5.13.0           # Renders PDF pages to images (fallback if no embedded image)
+
+# ---------- Optional dev helpers (not required to run the app) ----------
+# google-genai==2.19.0      # Only used by check_models.py (prototyping script)
