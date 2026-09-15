@@ -18,7 +18,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const navLinks = [
-    { name: "Calculate", href: "/calculator", icon: Calculator },
+    { name: "Calculator", href: "/calculator", icon: Calculator },
     { name: "Upload", href: "/", icon: Upload },
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
     { name: "History", href: "/history", icon: History },

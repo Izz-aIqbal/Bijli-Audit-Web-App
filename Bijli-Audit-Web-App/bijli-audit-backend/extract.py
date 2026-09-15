@@ -303,15 +303,22 @@ def _postprocess(data: dict, combined_text: str) -> dict:
     llm_total = data["total_amount_due"]
 
     # 1) Anchor on the word "PAYABLE" in the OCR text itself.
+    #    The naive "first number after PAYABLE" grabs date days like
+    #    "17-AUG-26" (17) instead of the real amount. Filter those out:
+    #    skip numbers followed by a month token, and keep only values that
+    #    could actually be a bill total (>= 100 rupees).
     payable_anchor = 0
-    m = re.search(
-        r"PA\w*ABL\w*[^\d]{0,80}?(\d{1,3}(?:[,.]\d{3})+|\d+)",
+    month_tokens = re.compile(r"\s*(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\b", re.IGNORECASE)
+    for m in re.finditer(
+        r"PA\w*ABL\w*[^\d]{0,60}?(\d[\d,]*)",
         combined_text,
         re.IGNORECASE,
-    )
-    if m:
+    ):
+        tail = combined_text[m.end(): m.end() + 5]
+        if month_tokens.match(tail):
+            continue  # "17-AUG-26" -> 17 is a date day, not an amount
         anchor_val = _to_float(m.group(1))
-        if 0 < anchor_val < gross_total or gross_total <= 0:
+        if anchor_val >= 100 and (gross_total <= 0 or anchor_val <= gross_total):
             payable_anchor = anchor_val
 
     # 2) If the LLM total equals the pre-subsidy gross, rebuild the payable.

@@ -9,6 +9,14 @@ import cv2
 import numpy as np
 import pypdfium2 as pdfium
 import pytesseract
+
+# Point directly at the installed Tesseract binary so OCR works even when a
+# terminal/VS Code session was started before PATH was updated. On Linux
+# (Railway) Tesseract is on PATH via the Dockerfile, so this is a no-op.
+_TESSERACT_WIN = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+if os.path.isfile(_TESSERACT_WIN):
+    pytesseract.pytesseract.tesseract_cmd = _TESSERACT_WIN
+
 from dotenv import load_dotenv
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.responses import StreamingResponse
