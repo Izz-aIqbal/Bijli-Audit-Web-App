@@ -1,4 +1,4 @@
-# ⚡ Bijli Audit — AI-Powered Electricity Bill Auditor & Tariff Guard
+#  Bijli Audit — AI-Powered Electricity Bill Auditor & Tariff Guard
 
 **Understanding. Verify. Save.**
 
@@ -8,7 +8,7 @@ Bijli Audit scans, audits, and explains **MEPCO electricity bills**. It reads yo
 
 ---
 
-## ✨ Features
+##  Features
 
 ### 1. Interactive Audit Calculator (flagship)
 - Enter **units** or **present/previous meter readings** directly.
@@ -48,7 +48,7 @@ Bijli Audit scans, audits, and explains **MEPCO electricity bills**. It reads yo
 
 ---
 
-## 🧱 Tech Stack
+##  Tech Stack
 
 ### Frontend (`bijli-audit-web`)
 | Technology | Role |
@@ -81,7 +81,7 @@ Bijli Audit scans, audits, and explains **MEPCO electricity bills**. It reads yo
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 Bijli-Audit-Web-App/
@@ -103,7 +103,7 @@ Bijli-Audit-Web-App/
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - **Node.js 22** (engines pinned in `package.json`)
@@ -142,7 +142,7 @@ Open **http://localhost:3000** — the frontend auto-targets `http://localhost:8
 
 ---
 
-## ☁️ Deployment
+##  Deployment
 
 ### Vercel (frontend)
 1. Import the repo into Vercel. `vercel.json` already sets **Root Directory** → `bijli-audit-web` and framework → Next.js.
@@ -159,7 +159,7 @@ Open **http://localhost:3000** — the frontend auto-targets `http://localhost:8
 
 ---
 
-## ✅ Verification
+##  Verification
 
 ```bash
 # Frontend
@@ -177,12 +177,12 @@ curl http://127.0.0.1:8000/api/v1/tariff     # NEPRA tariff JSON
 
 ---
 
-## 📌 Known Limitations
+##  Known Limitations
 - OCR accuracy depends on photo quality — faint/glossy/stained bills may cause one or two fields to extraction at low confidence (the UI flags this rather than guessing).
 - Tariff JSON must be refreshed each time NEPRA publishes new rates.
 - Currently MEPCO-specific; other DISCOs need their own tariff file.
 
-## 🔭 Roadmap
+##  Roadmap
 - Multi-DISCO support (LESCO, IESCO, FESCO, …)
 - Urdu + voice-first interface
 - WhatsApp/SMS alerts approaching the 200-unit limit
